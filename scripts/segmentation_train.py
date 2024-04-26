@@ -16,13 +16,11 @@ from guided_diffusion.script_util import (
 )
 import torch as th
 from guided_diffusion.train_util import TrainLoop
-from visdom import Visdom
-viz = Visdom(port=8850)
 import torchvision.transforms as transforms
 
 def main():
     args = create_argparser().parse_args()
-
+    print(args)
     dist_util.setup_dist(args)
     logger.configure(dir = args.out_dir)
 
@@ -90,8 +88,8 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_name = 'BRATS',
-        data_dir="../dataset/brats2020/training",
+        data_name = 'ISIC',
+        data_dir="/root/MedSegDiffsion-Skin/ISIC",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
@@ -106,7 +104,7 @@ def create_argparser():
         fp16_scale_growth=1e-3,
         gpu_dev = "0",
         multi_gpu = None, #"0,1,2"
-        out_dir='./results/'
+        out_dir='/root/MedSegDiffsion-Skin/generate'
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()
