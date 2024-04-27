@@ -163,6 +163,7 @@ def main():
                 #     vutils.save_image(gt, fp = os.path.join('./results/' + str(ind)+'gt.jpg'), nrow = 1, padding = 10)
                 temp = eval_seg(pred, gt)
                 mix_res = tuple([sum(a) for a in zip(mix_res, temp)])
+                print(mix_res)
     iou, dice = tuple([a/num for a in mix_res])
     print('iou is',iou)
     print('dice is', dice)

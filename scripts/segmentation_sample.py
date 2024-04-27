@@ -178,7 +178,7 @@ def create_argparser():
         gpu_dev = "0",
         out_dir='./results/',
         multi_gpu = None, #"0,1,2"
-        debug = False
+        debug = True
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()
